@@ -5,7 +5,7 @@ include 'conexion.php';
 //*:Metodo para realizar consultas
 $PDO = new Conexion();
 
-/*if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
+if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 
     //*:Metodo para extraer por ID los datos de la tabla  
     if ( isset( $_GET['id'] ) ) {
@@ -19,7 +19,7 @@ $PDO = new Conexion();
 
 
       //*:Metodo para extraer todos los datos de la tabla  
-    } /*else {
+    } else {
         $consulta = $PDO->prepare( "SELECT *FROM empleados" );
         $consulta->execute();
         $consulta->setFetchMode( PDO::FETCH_ASSOC );
@@ -27,11 +27,11 @@ $PDO = new Conexion();
         echo json_encode( $consulta->fetchAll() );
         exit();
 
-    }*/
-}*/
+    }
+}
 
 //*:Metodo para insertar  datos en la tabla  
-/*if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     $query = "INSERT INTO empleados(id,nombre, apellidos,telefono,domicilio,area)
         VALUES  (:id,:nombre, :apellidos, :telefono,:domicilio,:area)";
 
@@ -50,13 +50,13 @@ $PDO = new Conexion();
         echo json_encode( $idPost );
         exit;
     }
-}*/
+}
 
 
 
 
 //*:Metodo para actualizar  datos en la tabla
-	/*if($_SERVER['REQUEST_METHOD'] == 'PUT')
+	if($_SERVER['REQUEST_METHOD'] == 'PUT')
 	{		
 		$query = "UPDATE empleados SET nombre=:nombre, apellidos=:apellidos, telefono=:telefono,
         domicilio=:domicilio,area=:area WHERE id=:id";
@@ -72,11 +72,11 @@ $PDO = new Conexion();
 		$actualizar->execute();
 		header("HTTP/1.1 200 Ok");
 		exit;
-	}*/
+	}
 	
 
 
-/*if($_SERVER['REQUEST_METHOD'] == 'DELETE')
+if($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
     $query = "DELETE FROM empleados WHERE id=:id";
     $eliminar = $PDO->prepare($query);
@@ -84,7 +84,7 @@ $PDO = new Conexion();
     $eliminar->execute();
     header("HTTP/1.1 200 Ok");
     exit;
-}*/
+}
 
 //*si no se encuetra ninguna opción anterior
 header("HTTP/1.1 400 Bad Request");
