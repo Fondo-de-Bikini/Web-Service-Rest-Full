@@ -19,7 +19,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 
 
       //*:Metodo para extraer todos los datos de la tabla  
-    } else {
+    } /*else {
         $consulta = $PDO->prepare( "SELECT *FROM empleados" );
         $consulta->execute();
         $consulta->setFetchMode( PDO::FETCH_ASSOC );
@@ -27,7 +27,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
         echo json_encode( $consulta->fetchAll() );
         exit();
 
-    }
+    }*/
 }
 
 //*:Metodo para insertar  datos en la tabla  
