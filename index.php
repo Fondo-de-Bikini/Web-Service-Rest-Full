@@ -5,7 +5,7 @@ include 'conexion.php';
 //*:Metodo para realizar consultas
 $PDO = new Conexion();
 
-if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
+/*if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 
     //*:Metodo para extraer por ID los datos de la tabla  
     if ( isset( $_GET['id'] ) ) {
@@ -28,10 +28,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
         exit();
 
     }*/
-}
+}*/
 
 //*:Metodo para insertar  datos en la tabla  
-if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+/*if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     $query = "INSERT INTO empleados(id,nombre, apellidos,telefono,domicilio,area)
         VALUES  (:id,:nombre, :apellidos, :telefono,:domicilio,:area)";
 
@@ -50,13 +50,13 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         echo json_encode( $idPost );
         exit;
     }
-}
+}*/
 
 
 
 
 //*:Metodo para actualizar  datos en la tabla
-	if($_SERVER['REQUEST_METHOD'] == 'PUT')
+	/*if($_SERVER['REQUEST_METHOD'] == 'PUT')
 	{		
 		$query = "UPDATE empleados SET nombre=:nombre, apellidos=:apellidos, telefono=:telefono,
         domicilio=:domicilio,area=:area WHERE id=:id";
@@ -72,11 +72,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		$actualizar->execute();
 		header("HTTP/1.1 200 Ok");
 		exit;
-	}
+	}*/
 	
 
 
-if($_SERVER['REQUEST_METHOD'] == 'DELETE')
+/*if($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
     $query = "DELETE FROM empleados WHERE id=:id";
     $eliminar = $PDO->prepare($query);
@@ -84,7 +84,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE')
     $eliminar->execute();
     header("HTTP/1.1 200 Ok");
     exit;
-}
+}*/
 
 //*si no se encuetra ninguna opción anterior
 header("HTTP/1.1 400 Bad Request");
