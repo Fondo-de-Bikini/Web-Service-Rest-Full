@@ -9,7 +9,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 
     //*:Metodo para extraer por ID los datos de la tabla  
     if ( isset( $_GET['id'] ) ) {
-        $consulta = $PDO->prepare( "SELECT *FROM empleados WHERE id=:id" );
+        $consulta = $PDO->prepare( "SELECT *FROM EMPLEADOS WHERE id=:id" );
         $consulta->bindValue( ':id', $_GET['id'] );
         $consulta->execute();
         $consulta->setFetchMode( PDO::FETCH_ASSOC );
@@ -20,7 +20,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 
       //*:Metodo para extraer todos los datos de la tabla  
     } else {
-        $consulta = $PDO->prepare( "SELECT *FROM empleados" );
+        $consulta = $PDO->prepare( "SELECT *FROM EMPLEADOS" );
         $consulta->execute();
         $consulta->setFetchMode( PDO::FETCH_ASSOC );
         header( "HTTP/1.1 200 Datos Obtenidos" );
@@ -32,7 +32,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 
 //*:Metodo para insertar  datos en la tabla  
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-    $query = "INSERT INTO empleados(id,nombre, apellidos,telefono,domicilio,area)
+    $query = "INSERT INTO EMPLEADOS(id,nombre, apellidos,telefono,domicilio,area)
         VALUES  (:id,:nombre, :apellidos, :telefono,:domicilio,:area)";
 
     $insertar = $PDO->prepare( $query );
@@ -58,7 +58,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 //*:Metodo para actualizar  datos en la tabla
 	if($_SERVER['REQUEST_METHOD'] == 'PUT')
 	{		
-		$query = "UPDATE empleados SET nombre=:nombre, apellidos=:apellidos, telefono=:telefono,
+		$query = "UPDATE EMPLEADOS SET nombre=:nombre, apellidos=:apellidos, telefono=:telefono,
         domicilio=:domicilio,area=:area WHERE id=:id";
 
 
@@ -78,7 +78,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 if($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
-    $query = "DELETE FROM empleados WHERE id=:id";
+    $query = "DELETE FROM EMPLEADOS WHERE id=:id";
     $eliminar = $PDO->prepare($query);
     $eliminar->bindValue(':id', $_GET['id']);
     $eliminar->execute();
