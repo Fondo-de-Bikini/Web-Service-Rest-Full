@@ -30,33 +30,33 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
     }
 }
 
-//*:Metodo para insertar  datos en la tabla  
-if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-   $query = "INSERT INTO EMPLEADOS(id, nombre, apellidos, telefono, domicilio, area)
-        VALUES  (:id, :nombre, :apellidos, :telefono, :domicilio, :area)";
-    
-
-    $insertar = $PDO->prepare( $query );
-    $insertar->bindValue( ':id', $_POST['id'] );
-    $insertar->bindValue( ':nombre', $_POST['nombre'] );
-    $insertar->bindValue( ':apellidos', $_POST['apellidos'] );
-    $insertar->bindValue( ':telefono', $_POST['telefono'] );
-    $insertar->bindValue( ':domicilio', $_POST['domicilio'] );
-    $insertar->bindValue( ':area', $_POST['area'] );
-    $insertar->execute();
-
-    $idPost = $PDO->lastInsertId();
-    if ( $idPost ) {
-        header( "HTTP/1.1 200 Ok" );
-        echo json_encode( $idPost );
-        exit;
-    }
-}
 
 
+//*:Metodo para insertar datos en la tabla
+
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+	{
+		$queryInsert = "INSERT INTO EMPLEADOS (id, nombre, apellidos, telefono, domicilio, area) 
+        VALUES(:id, :nombre, :apellidos, :telefono, :domicilio, :area)";
+		$insertar = $PDO->prepare($queryInsert);
+		$insertar->bindValue(':id', $_POST['id']);
+		$insertar->bindValue(':nombre', $_POST['nombre']);
+		$insertar->bindValue(':apellidos', $_POST['apellidos']);
+        $insertar->bindValue(':telefono', $_POST['telefono']);
+        $insertar->bindValue(':domicilio', $_POST['domicilio']);
+        $insertar->bindValue(':area', $_POST['area']);
+		$insertar->execute();
+		$idPost = $PDO->lastInsertId(); 
+		if($idPost)
+		{
+			header("HTTP/1.1 200 Ok");
+			echo json_encode($idPost);
+			exit;
+		}
+	}
 
 
-//*:Metodo para actualizar  datos en la tabla
+//*:Metodo para actualizar datos en la tabla
 	if($_SERVER['REQUEST_METHOD'] == 'PUT')
 	{		
 		$query = "UPDATE EMPLEADOS SET nombre=:nombre, apellidos=:apellidos, telefono=:telefono,
@@ -75,7 +75,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		exit;
 	}
 	
-
+//*:Metodo para insertar eliminar en la tabla
 
 if($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
@@ -89,4 +89,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE')
 
 //*si no se encuetra ninguna opción anterior
 header("HTTP/1.1 400 Bad Request");
+
+
+
 ?>
