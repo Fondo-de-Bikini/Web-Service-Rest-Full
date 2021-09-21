@@ -32,8 +32,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 
 //*:Metodo para insertar  datos en la tabla  
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-    $query = "INSERT INTO EMPLEADOS(id,nombre, apellidos,telefono,domicilio,area)
-        VALUES  (:id,:nombre, :apellidos, :telefono,:domicilio,:area)";
+   $query = "INSERT INTO EMPLEADOS(id, nombre, apellidos, telefono, domicilio, area)
+        VALUES  (:id, :nombre, :apellidos, :telefono, :domicilio, :area)";
+    
 
     $insertar = $PDO->prepare( $query );
     $insertar->bindValue( ':id', $_POST['id'] );
